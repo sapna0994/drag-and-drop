@@ -8,7 +8,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag} from '@angular
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
-  @ViewChild(TemplateRef, {static: false}) dialogTemplate: TemplateRef<any>;
+  @ViewChild(TemplateRef) dialogTemplate: TemplateRef<any>;
   private overlayRef: OverlayRef;
   private portal: TemplatePortal;
   constructor(
