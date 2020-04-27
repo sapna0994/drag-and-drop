@@ -1,0 +1,105 @@
+
+.sidenav-container {
+  height: 100%;
+}
+.pointer{
+  cursor: pointer;
+}
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+a {
+  color: inherit;
+}
+.top-row-ml mat-icon {
+  color: lightgreen;
+}
+.font13 {
+  font-size: 13px;
+}
+.font15 {
+  font-size: 15px;
+}
+.login-button {
+  margin-left: 9px;
+  color: #fff;
+  background-color: #008ad2;
+}
+.secondToolbar{
+  background-color: #fff;
+  color:#333;
+}
+.loginButton{
+  width:120px;
+}
+@media (min-width: 768px) {
+  .top-row-ml {
+    margin-left: 90px;
+  }
+  .top-row-mr {
+    margin-right: 90px;
+  }
+  .top-menu-text {
+    padding: 0 18px;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+  .top-menu-text {
+    display: none;
+  }
+  .top-row-ml {
+    margin-left: 0;
+  }
+  .top-row-mr {
+    margin-right: 0;
+  }
+  .sideMenu{
+    padding: 0px;
+    min-width: 0px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 1370px) {
+  .top-row-ml {
+    margin-left: 0;
+  }
+  .top-row-mr {
+    margin-left: 0;
+  }
+}
+.btn1 {
+  left: 50px;
+  top: 40px;
+  width: 75%;
+  height: 100%;
+  border-radius: 17.5px;
+}
+.btn2 {
+  margin-top:20px;
+}
+.items {
+  font-size: 13px;
+  color: #333333;
+  font-weight: normal;
+  font-style: normal;
+}
+.tab-row {
+  margin-top: 12px;
+}
+.tab-row2 {
+  margin-top: -15px;
+}
+

@@ -1,0 +1,26 @@
+<div class="containerX">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex="40%" class="mt-4">
+	     	<mat-card class="getCard">
+                <div class="mb-2 ml-4">
+                    <input type="text" placeholder="Enter Text" aria-label="Text Name" [(ngModel)]="data" name="data" (input)="data=$event.targt.value">
+                </div>
+            </mat-card>
+        </div>
+        <div fxFlex="60%" class="mt-4">
+            <mat-card class="getCard">
+                <!-- <div class="mb-2 ml-4 text-center">
+                    <button mat-flat-button class="font12 font500" (click)="saveImage()">
+                       Download Image
+                    </button>
+                </div> -->
+               <div class="mb-2 ml-4 text-center">
+                <img src="../../assets/img-text.jpg" alt="image" width="60%"/>
+               </div>
+               <div class="text-center mt-4">
+                    <p class="text-box font16" cdkDrag>{{data}}</p>
+                </div>
+           </mat-card>
+       </div>
+    </div>
+</div>

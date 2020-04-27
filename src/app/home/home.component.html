@@ -1,0 +1,267 @@
+<div class="containerX">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex class="mt-4 mb-4 ">
+			<div class="mt-2 mb-2">
+				<h4>1. Basic Drag and Drop</h4>
+				<div class="dnd-box ml-4 mt-2" cdkDrag>
+					Drag me around
+				</div>
+			</div>
+	    </div>
+	</div>
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex="30%" class="mt-4 mb-4 ">
+			<mat-card>
+				<div class="mt-2 mb-2">
+					<h4>2. Reordering lists</h4>
+					<div cdkDropList class="reorder-list" (cdkDropListDropped)="drop($event)">
+						<div class="reorder-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+					</div>
+				</div>
+			</mat-card>	
+		</div>
+		<div fxFlex="70%" class="mt-4 mb-4">
+			<mat-card class="thirdCard">
+				<h4>3. Transferring items between lists</h4>
+				<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="9px" fxLayoutGap.xs="0px" class="text-center">	
+					<div fxFlex class="mt-2 mb-2">
+						<div class="transfer-container">
+							<h6>To do</h6> 
+							<div
+							cdkDropList
+							#todoList="cdkDropList"
+							[cdkDropListData]="todo"
+							[cdkDropListConnectedTo]="[doneList]"
+							class="transfer-list"
+							(cdkDropListDropped)="transfer($event)">
+							<div class="transfer-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+							</div>
+						</div>
+					</div>
+					<div fxFlex class="mt-2 mb-2">
+						<div class="transfer-container">
+							<h6>Done</h6>
+							<div
+							cdkDropList
+							#doneList="cdkDropList"
+							[cdkDropListData]="done"
+							[cdkDropListConnectedTo]="[todoList]"
+							class="transfer-list"
+							(cdkDropListDropped)="transfer($event)">
+							<div class="transfer-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</mat-card>
+		</div>
+	</div>
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex class="mt-4 mb-4 ">
+			<div class="mt-2 mb-2">
+				<h4>4. Customizing the drag area using a handle</h4>
+				<div class="customizing-box" cdkDrag>
+					I can only be dragged using the handle
+				  
+					<div class="customizing-handle" cdkDragHandle>
+					  <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+						<path d="M0 0h24v24H0z" fill="none"></path>
+					  </svg>
+					</div>
+				  </div>
+			</div>
+	    </div>
+	</div>
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex class="mt-4 mb-4 ">
+			<div class="mt-2 mb-2">
+				<h4>5. Customizing the drag preview</h4>
+				<div cdkDropList class="preview-list" (cdkDropListDropped)="preview($event)">
+					<div class="preview-box" *ngFor="let movie of movies1" cdkDrag>
+					  {{movie.title}}
+					  <img *cdkDragPreview [src]="movie.poster" [alt]="movie.title">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div fxFlex class="mt-4 mb-4 ">
+			<div class="mt-2 mb-2">
+				<h4>6. Customizing the drag placeholder</h4>
+				<div cdkDropList class="placeholder-list" (cdkDropListDropped)="placeholder($event)">
+					<div class="placeholder-box" *ngFor="let movie of movies2" cdkDrag>
+					  <div class="placeholder-custom-placeholder" *cdkDragPlaceholder></div>
+					  {{movie}}
+					</div>
+				</div>
+			</div>
+	    </div>
+	</div>
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex class="mt-4 mb-4 ">
+			<div class="mt-2 mb-2">
+				<h4>7. List orientation</h4>
+				<div cdkDropList cdkDropListOrientation="horizontal" class="listOrientation-list" (cdkDropListDropped)="listOrientation($event)">
+					<div class="listOrientation-box" *ngFor="let timePeriod of timePeriods" cdkDrag>{{timePeriod}}</div>
+				</div>
+			</div>
+	    </div>
+	</div>
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex="40%" class="mt-4 mb-4 ">
+			<mat-card>
+				<div class="mt-2 mb-2">
+					<h4>8. Restricting movement within an element</h4>
+					<div class="restricting-movement-boundary">
+						<div class="restricting-movement-box" cdkDragBoundary=".restricting-movement-boundary" cdkDrag>
+						  I can only be dragged within the dotted container
+						</div>
+					</div>
+				</div>
+			</mat-card>	
+		</div>
+		<div fxFlex="60%" class="mt-4 mb-4">
+			<mat-card class="ninethCard">
+				<h4>9. Restricting movement along an axis</h4>
+				<div class="axis-box" cdkDragLockAxis="y" cdkDrag>
+					I can only be dragged up/down
+				</div>  
+				<div class="axis-box" cdkDragLockAxis="x" cdkDrag>
+					I can only be dragged left/right
+				</div>
+			</mat-card>
+		</div>
+	</div>
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex class="mt-4 mb-4 ">
+			<div class="mt-2 mb-2">
+				<h4>10. Alternate drag root element</h4>
+				<button (click)="openDialog()">Open a draggable dialog</button>
+				<ng-template #loading>
+					<div class="alternate-dialog-content" cdkDrag cdkDragRootElement=".cdk-overlay-pane">
+					  Drag the dialog around!
+					</div>
+				</ng-template>
+			</div>
+	    </div>
+	</div>
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex class="mt-4 mb-4">
+			<div class="mt-2 mb-2">
+				<h4>11.  Controlling which items can be moved into a container</h4>
+				<div class="control-item-container text-center">
+					<h6>Available numbers</h6>
+				  
+					<div
+					  id="all"
+					  cdkDropList
+					  [cdkDropListData]="all"
+					  cdkDropListConnectedTo="even"
+					  class="control-item-list"
+					  (cdkDropListDropped)="controlNumber($event)"
+					  [cdkDropListEnterPredicate]="noReturnPredicate">
+					  <div
+						class="control-item-box"
+						*ngFor="let number of all"
+						[cdkDragData]="number"
+						cdkDrag>{{number}}</div>
+					</div>
+				  </div>
+				  
+				  <div class="control-item-container text-center">
+					<h6>Even numbers</h6>
+				  
+					<div
+					  id="even"
+					  cdkDropList
+					  [cdkDropListData]="even"
+					  cdkDropListConnectedTo="all"
+					  class="control-item-list"
+					  (cdkDropListDropped)="controlNumber($event)"
+					  [cdkDropListEnterPredicate]="evenPredicate">
+					  <div
+						class="control-item-box"
+						*ngFor="let number of even"
+						cdkDrag
+						[cdkDragData]="number">{{number}}</div>
+					</div>
+				  </div>
+								  
+			</div>
+	    </div>
+	</div>
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex="35%" class="mt-4 mb-4 ">
+			<mat-card class="twelthCard">
+				<div class="mt-2 mb-2">
+					<h4>12. Disabled dragging</h4>
+					<div cdkDropList class="disable-drag-list" (cdkDropListDropped)="disableDrag($event)">
+						<div
+						  class="disable-drag-box"
+						  *ngFor="let item of items"
+						  cdkDrag
+						  [cdkDragDisabled]="item.disabled">{{item.value}}</div>
+					</div>
+				</div>
+			</mat-card>	
+		</div>
+		<div fxFlex="65%" class="mt-4 mb-4">
+			<mat-card>
+				<h4>13. Disabled sorting</h4>
+				<div cdkDropListGroup>
+					<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="9px" fxLayoutGap.xs="0px">
+						<div fxFlex class="mt-4 mb-4 ">
+							<div class="disable-sorting-container">
+								<h6>Available items</h6>
+								<div
+								  cdkDropList
+								  [cdkDropListData]="items1"
+								  class="disable-sorting-list"
+								  cdkDropListSortingDisabled
+								  (cdkDropListDropped)="disableSorting($event)">
+								  <div class="disable-sorting-box" *ngFor="let item of items1" cdkDrag>{{item}}</div>
+								</div>
+							</div>
+						</div>
+						<div fxFlex class="mt-4 mb-4 ">
+							<div class="disable-sorting-container">
+								<h6>Shopping basket</h6>
+								<div
+								  cdkDropList
+								  [cdkDropListData]="basket"
+								  class="disable-sorting-list"
+								  (cdkDropListDropped)="disableSorting($event)">
+								  <div class="disable-sorting-box" *ngFor="let item of basket" cdkDrag>{{item}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	  
+			</mat-card>
+		</div>
+	</div>
+	<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="27px" fxLayoutGap.xs="0px">
+	    <div fxFlex class="mt-4 mb-4 ">
+			<mat-card class="fourtinCard">
+				<div class="mt-2 mb-2">
+					<h4>14. Delayed dragging</h4>
+					<div class="delayed-drag-box" cdkDrag [cdkDragStartDelay]="1000">
+						Dragging starts after one second
+					</div>
+				</div>
+			</mat-card>	
+		</div>
+		<div fxFlex class="mt-4 mb-4">
+			<mat-card>
+				<h4>15. Changing the standalone drag position</h4>
+				<p>
+					<button (click)="changePosition()">Change element position</button>
+				  </p>
+				  
+				  <div class="drag-position-box" cdkDrag [cdkDragFreeDragPosition]="dragPosition">
+					Drag me around
+				  </div>
+			</mat-card>
+		</div>
+	</div>
+</div>
